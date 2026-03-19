@@ -7,17 +7,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* GLOBAL */
-html {
-  scroll-behavior: smooth; /* ✅ smooth scroll */
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   background: linear-gradient(180deg, #eef4ff, #dbeafe);
-  color: #222;
 }
 
 /* HEADER */
@@ -26,143 +21,98 @@ header {
   color: white;
   padding: 80px 20px;
   text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-/* floating glow effect */
-header::after {
-  content: "";
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: rgba(255,255,255,0.1);
-  top: -100px;
-  right: -100px;
-  border-radius: 50%;
-  filter: blur(60px);
-}
-
-header h1 {
-  font-size: 3em;
-  margin: 0;
-}
-
-header p {
-  opacity: 0.9;
-  margin-top: 10px;
 }
 
 /* NAV */
 nav {
   position: sticky;
   top: 0;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.9);
   backdrop-filter: blur(10px);
   padding: 15px;
   text-align: center;
   box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-  z-index: 1000;
 }
 
 nav a {
-  position: relative;
-  margin: 0 20px;
+  margin: 0 15px;
   text-decoration: none;
   color: #1e3a5f;
   font-weight: 600;
-  padding: 5px 0;
-}
-
-/* animated underline */
-nav a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 3px;
-  background: #3b82f6;
-  left: 0;
-  bottom: -5px;
-  transition: 0.3s;
-}
-
-nav a:hover::after {
-  width: 100%;
 }
 
 /* SECTIONS */
 section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-  padding: 50px;
+  padding: 40px;
   max-width: 900px;
-  margin: 40px auto;
-  background: rgba(255,255,255,0.85);
+  margin: 30px auto;
+  background: white;
   border-radius: 15px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* visible animation */
-section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* hover lift */
-section:hover {
-  transform: translateY(-8px) scale(1.01);
-}
-
-/* HEADINGS */
-h2 {
-  color: #1e3a5f;
-}
-
-h3 {
-  color: #3b82f6;
-}
-
-/* LIST */
-li {
-  margin-bottom: 10px;
-}
-
-/* HIGHLIGHT */
-.highlight {
-  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-  padding: 20px;
-  border-left: 6px solid #2563eb;
-  border-radius: 10px;
-  margin-top: 20px;
+/* BUTTON */
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 18px;
+  background: #3b82f6;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
   transition: 0.3s;
 }
 
-/* glow hover */
-.highlight:hover {
-  box-shadow: 0 0 20px rgba(59,130,246,0.4);
-  transform: scale(1.02);
+.btn:hover {
+  background: #1e3a5f;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
+/* HIDDEN CONTENT */
+.hidden {
+  display: none;
+  margin-top: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(10px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background: white;
+  margin: 5% auto;
   padding: 30px;
-  background: linear-gradient(135deg, #1e3a5f, #3b82f6);
-  color: white;
-  margin-top: 50px;
+  width: 80%;
+  max-width: 700px;
+  border-radius: 10px;
+  overflow-y: auto;
+  max-height: 80vh;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-  section {
-    padding: 25px;
-  }
+.close {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+}
 
-  header h1 {
-    font-size: 2.2em;
-  }
+/* VIDEO */
+iframe {
+  width: 100%;
+  height: 400px;
+  border-radius: 10px;
 }
 
 </style>
@@ -172,114 +122,108 @@ footer {
 
 <header>
   <h1>College Soccer Recruiting Guide</h1>
-  <p>A clear path from high school to college soccer</p>
+  <p>Take control of your recruiting journey</p>
 </header>
 
 <nav>
   <a href="#start">Start Early</a>
-  <a href="#research">Research</a>
   <a href="#contact">Contact</a>
-  <a href="#fit">Fit</a>
-  <a href="#action">Action</a>
+  <a href="#video">Example Video</a>
 </nav>
 
+<!-- START EARLY -->
 <section id="start">
-  <h2>Why Starting Early Matters</h2>
-  <p>Starting early gives you control over your recruiting journey.</p>
+  <h2>Starting Early Matters</h2>
+  <p>Give yourself more opportunities by getting ahead.</p>
 
-  <div class="highlight">
-    <strong>Start early so you can:</strong>
-    <ul>
-      <li>Build a highlight video</li>
-      <li>Connect with coaches</li>
-      <li>Understand your level</li>
-      <li>Balance academics</li>
-    </ul>
+  <div class="btn" onclick="toggle('startMore')">Learn More</div>
+
+  <div id="startMore" class="hidden">
+    <p>
+      Starting early allows you to build relationships with coaches over time,
+      improve your skills, and understand what level fits you best.
+      Recruiting is competitive—players who take initiative stand out.
+    </p>
+
+    <h3>Example Highlight Video:</h3>
+    <iframe src="https://www.youtube.com/watch?v=iSMsWtD71Bw&t=7s"></iframe>
   </div>
 </section>
 
-<section id="research">
-  <h2>How to Research Schools</h2>
-
-  <h3>Look For:</h3>
-  <ul>
-    <li>Roster competition</li>
-    <li>Graduating players</li>
-    <li>Play style</li>
-    <li>Academics</li>
-    <li>Location</li>
-  </ul>
-
-  <div class="highlight">
-    <strong>Tip:</strong> Find the right fit—not just the biggest name.
-  </div>
-</section>
-
+<!-- CONTACT -->
 <section id="contact">
   <h2>Contacting Coaches</h2>
+  <p>You need to reach out—don’t wait to be discovered.</p>
 
-  <h3>Email Should Include:</h3>
-  <ul>
-    <li>Basic info</li>
-    <li>Highlight video</li>
-    <li>Stats</li>
-    <li>Why their program</li>
-  </ul>
-
-  <div class="highlight">
-    <strong>Keep it simple:</strong> Clear + direct wins.
-  </div>
+  <div class="btn" onclick="openModal()">View Email Template</div>
 </section>
 
-<section id="fit">
-  <h2>Finding the Right Fit</h2>
+<!-- VIDEO TAB -->
+<section id="video">
+  <h2>Example Highlight Video</h2>
+  <p>This is what a strong recruiting video can look like.</p>
 
-  <ul>
-    <li>Playing time?</li>
-    <li>Coaching style?</li>
-    <li>Academics?</li>
-    <li>Can you live there?</li>
-  </ul>
-
-  <div class="highlight">
-    <strong>Balance matters:</strong> Soccer + life.
-  </div>
+  <iframe src="https://www.youtube.com/watch?v=iSMsWtD71Bw&t=7s"></iframe>
 </section>
 
-<section id="action">
-  <h2>Take Action</h2>
+<!-- MODAL -->
+<div id="emailModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
 
-  <ul>
-    <li>Research</li>
-    <li>Build film</li>
-    <li>Email coaches</li>
-    <li>Stay organized</li>
-  </ul>
+    <h2>Email Template</h2>
 
-  <div class="highlight">
-    <strong>You’re in control.</strong>
+<pre>
+Dear Coach [First/Last Name],
+
+I'm [Your Name], a [Year in School] at [High School] in [City, State], graduating [Year].
+
+I play [Position], and my strengths are:
+- [Skill/Stat]
+- [Skill/Stat]
+
+I'm interested in your program because [Why school].
+
+My accomplishments:
+- [Stats]
+- GPA: [X]
+
+I’m involved in [Activities].
+
+Here is my highlight video:
+[Link]
+
+Please let me know your feedback and what I can improve.
+
+Thank you,
+[Your Name]
+</pre>
+
   </div>
-</section>
-
-<footer>
-  <p>© 2026 Recruiting Guide</p>
-</footer>
+</div>
 
 <script>
-/* SCROLL ANIMATION */
-const sections = document.querySelectorAll("section");
 
-const reveal = () => {
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      sec.classList.add("show");
-    }
-  });
-};
+/* TOGGLE SECTIONS */
+function toggle(id) {
+  let el = document.getElementById(id);
+  el.style.display = (el.style.display === "block") ? "none" : "block";
+}
 
-window.addEventListener("scroll", reveal);
-reveal();
+/* MODAL */
+function openModal() {
+  document.getElementById("emailModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("emailModal").style.display = "none";
+}
+
+window.onclick = function(e) {
+  let modal = document.getElementById("emailModal");
+  if (e.target == modal) modal.style.display = "none";
+}
+
 </script>
 
 </body>
