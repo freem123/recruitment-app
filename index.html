@@ -4,108 +4,154 @@
 <meta charset="UTF-8">
 <title>College Soccer Recruiting Guide</title>
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* GLOBAL */
+html {
+  scroll-behavior: smooth; /* ✅ smooth scroll */
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  background: #eef3f9;
-  color: #333;
+  background: linear-gradient(180deg, #eef4ff, #dbeafe);
+  color: #222;
 }
 
 /* HEADER */
 header {
-  background: linear-gradient(135deg, #1e3a5f, #2c5282);
+  background: linear-gradient(135deg, #1e3a5f, #3b82f6);
   color: white;
-  padding: 60px 20px;
+  padding: 80px 20px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* floating glow effect */
+header::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: rgba(255,255,255,0.1);
+  top: -100px;
+  right: -100px;
+  border-radius: 50%;
+  filter: blur(60px);
 }
 
 header h1 {
+  font-size: 3em;
   margin: 0;
-  font-size: 2.5em;
 }
 
 header p {
-  margin-top: 10px;
   opacity: 0.9;
+  margin-top: 10px;
 }
 
 /* NAV */
 nav {
-  background: white;
-  padding: 15px;
-  text-align: center;
   position: sticky;
   top: 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
   z-index: 1000;
 }
 
 nav a {
-  color: #2c5282;
+  position: relative;
   margin: 0 20px;
   text-decoration: none;
+  color: #1e3a5f;
   font-weight: 600;
+  padding: 5px 0;
+}
+
+/* animated underline */
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  background: #3b82f6;
+  left: 0;
+  bottom: -5px;
   transition: 0.3s;
 }
 
-nav a:hover {
-  color: #1e3a5f;
+nav a:hover::after {
+  width: 100%;
 }
 
 /* SECTIONS */
 section {
-  padding: 40px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+  padding: 50px;
   max-width: 900px;
-  margin: 30px auto;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-  transition: transform 0.2s ease;
+  margin: 40px auto;
+  background: rgba(255,255,255,0.85);
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  backdrop-filter: blur(10px);
 }
 
+/* visible animation */
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* hover lift */
 section:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.01);
 }
 
+/* HEADINGS */
 h2 {
   color: #1e3a5f;
-  margin-bottom: 10px;
 }
 
 h3 {
-  margin-top: 20px;
-  color: #2c5282;
+  color: #3b82f6;
 }
 
-/* LISTS */
-ul {
-  padding-left: 20px;
-}
-
+/* LIST */
 li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-/* HIGHLIGHT BOX */
+/* HIGHLIGHT */
 .highlight {
-  background: #f0f6ff;
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
   padding: 20px;
-  border-left: 6px solid #2c5282;
-  border-radius: 6px;
+  border-left: 6px solid #2563eb;
+  border-radius: 10px;
   margin-top: 20px;
+  transition: 0.3s;
+}
+
+/* glow hover */
+.highlight:hover {
+  box-shadow: 0 0 20px rgba(59,130,246,0.4);
+  transform: scale(1.02);
 }
 
 /* FOOTER */
 footer {
   text-align: center;
   padding: 30px;
-  background: #1e3a5f;
+  background: linear-gradient(135deg, #1e3a5f, #3b82f6);
   color: white;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 /* MOBILE */
@@ -114,15 +160,11 @@ footer {
     padding: 25px;
   }
 
-  nav a {
-    display: inline-block;
-    margin: 10px;
-  }
-
   header h1 {
-    font-size: 2em;
+    font-size: 2.2em;
   }
 }
+
 </style>
 </head>
 
@@ -135,25 +177,23 @@ footer {
 
 <nav>
   <a href="#start">Start Early</a>
-  <a href="#research">Research Schools</a>
-  <a href="#contact">Contact Coaches</a>
-  <a href="#fit">Find the Right Fit</a>
-  <a href="#action">Take Action</a>
+  <a href="#research">Research</a>
+  <a href="#contact">Contact</a>
+  <a href="#fit">Fit</a>
+  <a href="#action">Action</a>
 </nav>
 
 <section id="start">
   <h2>Why Starting Early Matters</h2>
-  <p>
-    The recruiting process can feel overwhelming, but starting early gives you control.
-  </p>
+  <p>Starting early gives you control over your recruiting journey.</p>
 
   <div class="highlight">
     <strong>Start early so you can:</strong>
     <ul>
-      <li>Build a strong highlight video</li>
-      <li>Develop relationships with coaches</li>
-      <li>Understand where you realistically fit</li>
-      <li>Balance soccer and academics effectively</li>
+      <li>Build a highlight video</li>
+      <li>Connect with coaches</li>
+      <li>Understand your level</li>
+      <li>Balance academics</li>
     </ul>
   </div>
 </section>
@@ -161,72 +201,86 @@ footer {
 <section id="research">
   <h2>How to Research Schools</h2>
 
-  <h3>Key Things to Look For:</h3>
+  <h3>Look For:</h3>
   <ul>
-    <li>Team roster (your position & competition)</li>
-    <li>Graduating players (future openings)</li>
-    <li>Team performance and style of play</li>
-    <li>Academic programs that interest you</li>
-    <li>Location and campus environment</li>
+    <li>Roster competition</li>
+    <li>Graduating players</li>
+    <li>Play style</li>
+    <li>Academics</li>
+    <li>Location</li>
   </ul>
 
   <div class="highlight">
-    <strong>Tip:</strong> Don’t just aim for the biggest schools—find programs where you can contribute.
+    <strong>Tip:</strong> Find the right fit—not just the biggest name.
   </div>
 </section>
 
 <section id="contact">
-  <h2>How to Contact College Coaches</h2>
+  <h2>Contacting Coaches</h2>
 
-  <h3>What to Include in Your Email:</h3>
+  <h3>Email Should Include:</h3>
   <ul>
-    <li>Your name, graduation year, and position</li>
-    <li>Highlight video link</li>
-    <li>Key stats and achievements</li>
-    <li>Why you're interested in their program</li>
+    <li>Basic info</li>
+    <li>Highlight video</li>
+    <li>Stats</li>
+    <li>Why their program</li>
   </ul>
 
   <div class="highlight">
-    <strong>Keep it simple:</strong> Be clear, direct, and personal.
+    <strong>Keep it simple:</strong> Clear + direct wins.
   </div>
 </section>
 
 <section id="fit">
   <h2>Finding the Right Fit</h2>
 
-  <h3>Ask Yourself:</h3>
   <ul>
-    <li>Will I get playing time?</li>
-    <li>Do I like the coaching style?</li>
-    <li>Does this school support my academic goals?</li>
-    <li>Can I see myself here for four years?</li>
+    <li>Playing time?</li>
+    <li>Coaching style?</li>
+    <li>Academics?</li>
+    <li>Can you live there?</li>
   </ul>
 
   <div class="highlight">
-    <strong>Balance matters:</strong> Your growth as a player and person both matter.
+    <strong>Balance matters:</strong> Soccer + life.
   </div>
 </section>
 
 <section id="action">
-  <h2>Take Control of Your Recruiting Journey</h2>
+  <h2>Take Action</h2>
 
-  <h3>Your Action Plan:</h3>
   <ul>
-    <li>Start researching schools early</li>
-    <li>Create and update your highlight video</li>
-    <li>Reach out to coaches consistently</li>
+    <li>Research</li>
+    <li>Build film</li>
+    <li>Email coaches</li>
     <li>Stay organized</li>
-    <li>Reflect on your goals</li>
   </ul>
 
   <div class="highlight">
-    <strong>Remember:</strong> You are in control. Stay consistent and trust the process.
+    <strong>You’re in control.</strong>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 College Soccer Recruiting Guide</p>
+  <p>© 2026 Recruiting Guide</p>
 </footer>
+
+<script>
+/* SCROLL ANIMATION */
+const sections = document.querySelectorAll("section");
+
+const reveal = () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      sec.classList.add("show");
+    }
+  });
+};
+
+window.addEventListener("scroll", reveal);
+reveal();
+</script>
 
 </body>
 </html>
